@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.dsutahar06.tallypracticeclean'
+    namespace 'com.dsuthar06.tallypracticeclean'
     compileSdk 35
 
     defaultConfig {
-        applicationId 'com.dsutahar06.tallypracticeclean'
+        applicationId 'com.dsuthar06.tallypracticeclean'
         minSdk 23
         targetSdk 35
         versionCode 1
