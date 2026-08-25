@@ -28,9 +28,9 @@ jobs:
           gradle-version: '8.9'
 
       - name: Build APK
-        working-directory: project
-        run: |
-          gradle assembleDebug --stacktrace
+  working-directory: project
+  run: |
+    gradle assembleDebug --stacktrace
 
       - name: Find APK
         run: |
