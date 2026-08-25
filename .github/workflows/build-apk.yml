@@ -13,7 +13,7 @@ jobs:
 
       - name: Extract Android project
         run: |
-          mkdir project
+          mkdir -p project
           unzip -q TallyPracticeClean.zip -d project
 
       - name: Set up Java
@@ -24,17 +24,24 @@ jobs:
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
 
       - name: Build APK
         working-directory: project
         run: |
-          chmod +x gradlew
-          ./gradlew assembleDebug --stacktrace
+          gradle assembleDebug --stacktrace
 
       - name: Find APK
         run: |
-          find project -type f -name "*.apk"
+          find project -type f -name "*.apk" -print
 
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: TallyPracticeClean-APK
+          path: project/**/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
